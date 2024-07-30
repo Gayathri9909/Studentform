@@ -1,0 +1,99 @@
+﻿@model StudentApp.Models.StudentAdmission
+@{
+    ViewBag.Title = "Student Admission Page";
+}
+
+<main class="container mt-4">
+    <h3>Student Admission Page</h3>
+    @using (Html.BeginForm("SubmitForm", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name, new { @class = "form-label" })
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, new { @class = "form-label" })
+
+                    <input type="email" class="form-control-file" id="email" name="Email" accept="" />
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DateOfBirth, new { @class = "form-label" })
+
+                    <input type="date" class="form-control-file" id="date" name="DateofBirth" accept="" />
+                    @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.phoneNumber, new { @class = "form-label" })
+
+                    <input type="number" class="form-control-file" id="phoneNumber" name="Phone Number" accept="" />
+
+                    @Html.ValidationMessageFor(model => model.phoneNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Address, new { @class = "form-label" })
+                    @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Course, new { @class = "form-label" })
+                    @Html.EditorFor(model => model.Course, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Course, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Photo, new { @class = "form-label" })
+                    <input type="file" class="form-control-file" id="Photo" name="Photo" accept="image/*" />
+                    @Html.ValidationMessageFor(model => model.Photo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Resume, new { @class = "form-label" })
+                    <input type="file" class="form-control-file" id="Resume" name="Resume" accept=".pdf" />
+                    @Html.ValidationMessageFor(model => model.Resume, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-md-12">
+                @Html.ActionLink("Back to Student Records", "showAllDetails", "Student", new { }, new { @class = "btn btn-secondary" })
+            </div>
+        </div>
+    }
+</main>
